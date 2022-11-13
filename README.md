@@ -1,5 +1,5 @@
 # An-Introduction-to-DL-for-the-Physical-
-## An introduction to Deep learning for thr Physical layer
+## An introduction to Deep learning for the Physical layer
 
 ### default parameter
 ```
