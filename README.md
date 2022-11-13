@@ -1,8 +1,8 @@
 # An-Introduction-to-DL-for-the-Physical-
 ## An introduction to Deep learning for the Physical layer
 
-pytorch 1.11.0\n
-python 3.10.6\n
+pytorch 1.11.0 <br/>
+python 3.10.6 <br/>
 cuda 11.3
 
 ### default parameter
