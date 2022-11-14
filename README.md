@@ -29,3 +29,18 @@ python mymain.py --test 0
 python mymain.py --test 1 --weight '{parameter_name.pth}'
 ```
 
+
+
+## plot
+
+- AWGN
+
+  ![AE(2.2)constellation](../images/README/AE(2.2)constellation-1668393067362-3.png)
+
+  ![AE(2,2)ber](../images/README/AE(2,2)ber-1668393073480-5.png)
+
+
+
+- Rayleigh Fading
+
+  
