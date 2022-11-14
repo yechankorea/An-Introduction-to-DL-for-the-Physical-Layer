@@ -18,12 +18,12 @@ parser.add_argument('--n', type=int, default=2)
 parser.add_argument('--k', type=int, default=2)
 parser.add_argument('--epochs', type=int, default=100, help='epochs')
 parser.add_argument('--batch_size', type=int, default=32, help='batch size')
-parser.add_argument('--lr', type=float, default=0.00017, help='learning rate')
+parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
 parser.add_argument('--snr_db',type=float,default=7,help='training snr dB')
-parser.add_argument('--train_num_msgs',type=float,default=10000,help='training num msgs')
-parser.add_argument('--test_num_msgs',type=float,default=10000,help='testing num msgs')
-parser.add_argument('--test', type=int, default=0)      # 0: train / 1 :test
-parser.add_argument('--plot', type=int, default=0)      # 0: constellation / 1: ber curve
+parser.add_argument('--train_num_msgs',type=float,default=8000,help='training num msgs')
+parser.add_argument('--test_num_msgs',type=float,default=50000,help='testing num msgs')
+parser.add_argument('--test', type=int, default=1)      # 0: train / 1 :test
+parser.add_argument('--plot', type=int, default=1)      # 0: constellation / 1: ber curve
 parser.add_argument('--weights', type=str,default= 'MY_MODEL_M=4_n=2_TrainSNR=7.pth')
 
 args = parser.parse_args()
@@ -126,13 +126,15 @@ def test(aplot):
             constellation plot
             '''
             test_labels = torch.linspace(0, M - 1, steps=M).long().to(device)
-            test_data = torch.sparse.torch.eye(M,device=torch.device('cuda')).index_select(dim=0, index=test_labels)
+            test_data = torch.sparse.torch.eye(M, device=torch.device('cuda')).index_select(dim=0, index=test_labels)
             x = model.encode_signal(test_data)
-            x =F.normalize(x,dim=1)
+            x = F.normalize(x, dim=1)
             plt.figure()
             plot_data = x.cpu().detach().numpy()
-            plt.scatter(plot_data[:, 0], plot_data[:, 1])
+            plt.scatter(plot_data[:, 0], plot_data[:, 1], label='Autoencoder({},{})'.format(n, k))
             plt.axis((-2.5, 2.5, -2.5, 2.5))
+            plt.legend(loc='upper right', ncol=1)
+            plt.grid()
             plt.show()
         else:
             '''
