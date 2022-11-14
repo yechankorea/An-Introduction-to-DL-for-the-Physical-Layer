@@ -1,6 +1,10 @@
 # An-Introduction-to-DL-for-the-Physical-
 ## An introduction to Deep learning for the Physical layer
 
+pytorch 1.11.0 <br/>
+python 3.10.6 <br/>
+cuda 11.3
+
 ### default parameter
 ```
 parser.add_argument('--n', type=int, default=2)
@@ -24,3 +28,4 @@ python mymain.py --test 0
 ```
 python mymain.py --test 1 --weight '{parameter_name.pth}'
 ```
+
